@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>파롯이와 대화하기</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <img src="/static/images/중립.png" id="parrot" class="parrot-chat">
+        <h2 id="emotion-text">기분을 말해줘!</h2>
+        <textarea id="input" placeholder="예: 오늘 진짜 화가 나..."></textarea>
+        <button onclick="send()">파롯이 분석해줘!</button>
+        <div id="songs"></div>
+    </div>
+
+    <script>
+    async function send() {
+        const text = document.getElementById("input").value;
+        if (!text.trim()) return;
+        
+        const res = await fetch("/analyze", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({text})
+        });
+        const data = await res.json();
+        
+        document.getElementById("parrot").src = data.img + "?t=" + Date.now();
+        document.getElementById("emotion-text").innerHTML = `<strong>${data.emotion}</strong> 감정이야!`;
+        document.getElementById("songs").innerHTML = "<h3>지금 이 노래 들어봐</h3><ul>" + data.songs + "</ul>";
+        document.getElementById("input").value = "";
+    }
+    </script>
+</body>
+</html>
