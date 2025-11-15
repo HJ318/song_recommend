@@ -1,0 +1,34 @@
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Malgun Gothic', sans-serif; }
+body { background: linear-gradient(135deg, #1e3c72, #2a5298); min-height:100vh; color:white; }
+
+.intro-container, .chat-container { text-align:center; padding:50px 20px; max-width:600px; margin:0 auto; }
+.parrot-intro, .parrot-chat { width:300px; border-radius:50%; border:10px solid #a0c4ff; box-shadow:0 15px 35px rgba(0,0,0,0.5); margin:30px auto; transition:all 0.4s; }
+h1 { font-size:38px; margin:20px 0; text-shadow:0 4px 10px rgba(0,0,0,0.5); }
+.speech { font-size:23px; background:rgba(255,255,255,0.2); padding:25px; border-radius:25px; backdrop-filter:blur(12px); margin:40px 0; line-height:1.6; }
+button { background:#4361ee; color:white; border:none; padding:18px 50px; font-size:22px; border-radius:50px; cursor:pointer; box-shadow:0 10px 25px rgba(0,0,0,0.4); transition:0.3s; }
+button:hover { background:#3a56d4; transform:translateY(-5px); }
+
+textarea { width:90%; max-width:500px; height:110px; padding:18px; border-radius:18px; border:none; font-size:18px; margin:25px 0; }
+#emotion-text { font-size:32px; margin:25px 0; text-shadow:0 4px 10px rgba(0,0,0,0.5); }
+#songs { margin-top:35px; background:rgba(255,255,255,0.15); padding:25px; border-radius:25px; backdrop-filter:blur(10px); }
+ul { list-style:none; }
+li { margin:18px 0; font-size:19px; }
+a { color:#a0c4ff; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* 감정별 움직임 애니메이션 */
+@keyframes fear { 0%,100%{transform:translateX(0)} 10%,30%,50%,70%,90%{transform:translateX(-6px)} 20%,40%,60%,80%{transform:translateX(6px)} }
+@keyframes surprise { 0%{transform:translateY(0) scale(1)} 40%{transform:translateY(-80px) scale(1.25)} 100%{transform:translateY(0) scale(1)} }
+@keyframes angry { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-10deg)} 75%{transform:rotate(10deg)} }
+@keyframes sad { 0%,100%{transform:translateY(0)} 50%{transform:translateY(30px) rotate(8deg)} }
+@keyframes happy { 0%,100%{transform:rotate(0) scale(1)} 25%{transform:rotate(-18deg) scale(1.15)} 75%{transform:rotate(18deg) scale(1.15)} 50%{filter:brightness(1.4) drop-shadow(0 0 25px #a0c4ff)} }
+@keyframes disgust { 0%{transform:translateX(0)} 50%{transform:translateX(-40px) scale(0.88)} 100%{transform:translateX(0)} }
+@keyframes neutral { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+.parrot-fear { animation: fear 0.5s ease-in-out 3; }
+.parrot-surprise { animation: surprise 1.2s ease-out; }
+.parrot-angry { animation: angry 0.7s infinite; }
+.parrot-sad { animation: sad 4s infinite; }
+.parrot-happy { animation: happy 1.8s infinite; }
+.parrot-disgust { animation: disgust 1.4s ease-in-out; }
+.parrot-neutral { animation: neutral 3s infinite ease-in-out; }
