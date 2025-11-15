@@ -1,3 +1,6 @@
+import logging
+logging.getLogger('werkzeug').setLevel(logging.ERROR)  # 불필요 로그 끄기
+
 from flask import Flask, render_template, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
