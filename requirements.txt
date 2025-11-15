@@ -1,6 +1,7 @@
+pip==25.3  # pip 업그레이드 먼저
 flask
 gunicorn
-torch==2.3.0 --index-url https://download.pytorch.org/whl/cpu
+torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
 transformers
 sentencepiece
 spotipy
